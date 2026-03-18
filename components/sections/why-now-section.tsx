@@ -1,6 +1,6 @@
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
-import { SectionHeader } from "@/components/sections/section-header";
+import { SectionHeader } from "@/components/layout/section-header";
 import { StatCard } from "@/components/cards/stat-card";
 
 
@@ -28,10 +28,10 @@ export function WhyNowSection() {
                     />
 
                     <StatCard
-                        value="88%"
+                        value="#2"
                         description={
                             <>
-                                plan to increase AI budgets over the next 12 months
+                                Lack of necessary data is the no. 2 concern using AI tools for marketers
                                 <sup className="ml-0.5 text-[0.65em] align-super">2</sup>
                             </>
                         }
@@ -60,13 +60,13 @@ export function WhyNowSection() {
                         </span>
                     </a>
                     <a
-                        href="https://www.pwc.com/us/en/tech-effect/ai-analytics/ai-agent-survey.html"
+                        href="https://www.salesforce.com/content/dam/web/en_us/www/documents/marketingcloud/S-MC-State-of-Marketing-Report-9th-Edition.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline underline-offset-4"
                     >
                         <span>
-                            <sup>2</sup> PwC AI Agent Report 2025
+                            <sup>2</sup> Salesforce State of Marketing Report 2025
                         </span>
                     </a>
                 </div>

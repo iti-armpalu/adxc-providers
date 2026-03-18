@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { Database, Sparkles } from "lucide-react"
-import { Card, CardContent } from "./ui/card"
+import { Card, CardContent } from "../ui/card"
 
 /**
  * Single source of truth:
@@ -44,11 +44,11 @@ const AGENT_SCATTERED_POSITIONS = [
 
 // Providers
 const PROVIDERS_ALL = [
-  { name: "Kantar", role: "Market Research" },
-  { name: "Nielsen", role: "Audience Data" },
-  { name: "Experian", role: "Consumer Insights" },
-  { name: "Circana (IRI)", role: "Retail & CPG Data" },
-  { name: "Comscore", role: "Digital Measurement" },
+  { name: "YouGov", role: "" },
+  { name: "Statista", role: "" },
+  { name: "Experian", role: "" },
+  { name: "Talkwalker", role: "" },
+  { name: "Comscore", role: "" },
 ] as const
 
 // Agents
@@ -64,46 +64,46 @@ const WORKFLOW_TASKS: TaskColumn[] = [
   {
     task: "Strategy / Brief",
     subtasks: [
-      { label: "Market understanding", agentIndex: 0, providerIndex: [0, 1, 2] },
-      { label: "Audience sizing", agentIndex: 0, providerIndex: [1, 2] },
-      { label: "Category context", agentIndex: 0, providerIndex: [0, 3] },
+      { label: "Audience understanding", agentIndex: 0, providerIndex: [0, 1, 2, 3] },
+      { label: "Competitor analysis", agentIndex: 0, providerIndex: [0, 1] },
+      { label: "Market sizing", agentIndex: 0, providerIndex: [1, 2] },
     ],
   },
   {
     task: "Creative Development",
     subtasks: [
-      { label: "Cultural tensions, insights", agentIndex: 1, providerIndex: [0, 4] },
-      { label: "Inspiration", agentIndex: 1, providerIndex: [4] },
-      { label: "Messaging development", agentIndex: 1, providerIndex: [0] },
+      { label: "Social trend analysis", agentIndex: 1, providerIndex: [3] },
+      { label: "Inspiration", agentIndex: 1, providerIndex: [3] },
+      { label: "Messaging development", agentIndex: 1, providerIndex: [0, 3] },
     ],
   },
   {
     task: "Media Strategy / Planning",
     subtasks: [
-      { label: "Reach, frequency", agentIndex: 0, providerIndex: [4] },
-      { label: "Channel effectiveness", agentIndex: 0, providerIndex: [4] },
-      { label: "Planning", agentIndex: 0, providerIndex: [4] },
+      { label: "Reach, frequency", agentIndex: 0, providerIndex: [2, 4] },
+      { label: "Channel effectiveness", agentIndex: 0, providerIndex: [1, 3, 4] },
+      { label: "Planning", agentIndex: 0, providerIndex: [0, 2, 4] },
     ],
   },
   {
     task: "Activation / Execution",
     subtasks: [
-      { label: "Campaign activation", agentIndex: 3, providerIndex: [2] },
-      { label: "Retail media", agentIndex: 3, providerIndex: [3] },
-      { label: "Execution", agentIndex: 3, providerIndex: [3] },
+      { label: "Campaign activation", agentIndex: 2, providerIndex: [2, 4] },
+      { label: "Shopper journey mapping", agentIndex: 2, providerIndex: [2, 4] },
+      { label: "Programmatic targeting", agentIndex: 2, providerIndex: [0, 2, 4] },
     ],
   },
   {
     task: "Measurement & Optimization",
     subtasks: [
-      { label: "Effectiveness", agentIndex: 2, providerIndex: [0, 1] },
-      { label: "Sales impact", agentIndex: 2, providerIndex: [3] },
-      { label: "Optimization", agentIndex: 2, providerIndex: [0, 1, 3] },
+      { label: "Effectiveness", agentIndex: 3, providerIndex: [0, 3, 4] },
+      { label: "Sales impact", agentIndex: 2, providerIndex: [2] },
+      { label: "Optimization", agentIndex: 3, providerIndex: [3, 4] },
     ],
   },
 ]
 
-const DEFAULT_SUBTASK_LABEL = "Market understanding"
+const DEFAULT_SUBTASK_LABEL = "Audience understanding"
 
 type AnimationState = "scattered" | "slotted"
 
@@ -500,7 +500,7 @@ export default function SquaresScatterToCard() {
 
       {/* --- Card in normal flow */}
       <div ref={cardWrapRef} className="relative z-0 flex justify-center pt-0">
-        <Card className="bg-card/80 backdrop-blur-xl shadow-2xl border-border/50 py-0 max-w-full">
+        <Card className="bg-card/80 backdrop-blur-xl shadow-md border-border/50 py-0 max-w-full">
           <CardContent className="relative p-4 md:p-8">
 
             {/* Data Providers */}

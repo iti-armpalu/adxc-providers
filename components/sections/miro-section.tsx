@@ -1,7 +1,7 @@
 
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
-import { SectionHeader } from "@/components/sections/section-header";
+import { SectionHeader } from "@/components/layout/section-header";
 
 export function MiroSection() {
     return (

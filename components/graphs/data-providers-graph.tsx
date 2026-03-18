@@ -15,53 +15,52 @@ type TaskColumn = {
 }
 
 const PROVIDERS = [
-  { name: "Kantar" },
-  { name: "Nielsen" },
+  { name: "YouGov" },
+  { name: "Statista" },
   { name: "Experian" },
-  { name: "GWI" },
+  { name: "Talkwalker" },
   { name: "Comscore" },
-  { name: "Your data" },
 ] as const
 
 const WORKFLOW_TASKS: TaskColumn[] = [
   {
     task: "Strategy / Brief",
     subtasks: [
-      { label: "Market understanding", providerIndex: [0, 1, 2, 5] },
-      { label: "Audience sizing", providerIndex: [1, 2] },
-      { label: "Category context", providerIndex: [0, 3] },
+      { label: "Audience understanding", providerIndex: [0, 1, 2, 3] },
+      { label: "Competitor analysis", providerIndex: [0, 1] },
+      { label: "Market sizing", providerIndex: [1, 2] },
     ],
   },
   {
     task: "Creative Development",
     subtasks: [
-      { label: "Cultural tensions, insights", providerIndex: [0, 4] },
-      { label: "Inspiration", providerIndex: [4] },
-      { label: "Messaging development", providerIndex: [0] },
+      { label: "Social trend analysis", providerIndex: [3] },
+      { label: "Inspiration", providerIndex: [3] },
+      { label: "Messaging development", providerIndex: [0, 3] },
     ],
   },
   {
     task: "Media Strategy / Planning",
     subtasks: [
-      { label: "Reach, frequency", providerIndex: [4] },
-      { label: "Channel effectiveness", providerIndex: [4] },
-      { label: "Planning", providerIndex: [4] },
+      { label: "Reach, frequency", providerIndex: [2, 4] },
+      { label: "Channel effectiveness", providerIndex: [1, 3, 4] },
+      { label: "Planning", providerIndex: [0, 2, 4] },
     ],
   },
   {
     task: "Activation / Execution",
     subtasks: [
-      { label: "Campaign activation", providerIndex: [2, 5] },
-      { label: "Retail media", providerIndex: [3] },
-      { label: "Execution", providerIndex: [3] },
+      { label: "Campaign activation", providerIndex: [2, 4] },
+      { label: "Shopper journey mapping", providerIndex: [2, 4] },
+      { label: "Programmatic targeting", providerIndex: [0, 2, 4] },
     ],
   },
   {
     task: "Measurement & Optimization",
     subtasks: [
-      { label: "Effectiveness", providerIndex: [0, 1, 5] },
-      { label: "Sales impact", providerIndex: [3] },
-      { label: "Optimization", providerIndex: [0, 1, 3] },
+      { label: "Effectiveness", providerIndex: [0, 3, 4] },
+      { label: "Sales impact", providerIndex: [2] },
+      { label: "Optimization", providerIndex: [3, 4] },
     ],
   },
 ]

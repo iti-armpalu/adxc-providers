@@ -1,9 +1,16 @@
 import { ReactNode } from "react";
-import SquaresScatterToCard from "@/components/squares-scatter-to-card";
+import SquaresScatterToCard from "@/components/graphs/squares-scatter-to-card";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
-import { SectionHeader } from "./section-header";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { SectionHeader } from "../layout/section-header";
+import { StepCards } from "../cards/steps-card";
+
+const STEPS = [
+  { number: 1, title: "AI Request", description: "AI agents query ADXC when completing tasks inside workflows." },
+  { number: 2, title: "Orchestration", description: "ADXC's Agentic Orchestrator understands the question context, breaks it into sub-tasks and identifies the most relevant data to answer it." },
+  { number: 3, title: "Abstract Answer", description: "The customer sees an abstract of the answer and price." },
+  { number: 4, title: "Full Answer", description: "The user approves and ADXC pulls only the relevant data to answer the question." },
+]
 
 
 export type WorkflowStep = {
@@ -38,42 +45,10 @@ export default function WorkflowSection({
         <div className="flex flex-col items-start gap-6 xl:flex-row">
           <SquaresScatterToCard />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-6">
-            {steps.map((step) => (
-              <Card key={step.number} className="flex-1 basis-0 gap-3 py-4">
-                <CardHeader>
-                  <CardTitle>
-
-                    <div className="flex flex-col gap-3 xl:flex-row xl:items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-pink-100">
-                        <span className="text-base font-bold text-adxc">
-                          {step.number}
-                        </span>
-                      </div>
-
-                      <h3 className="text-base font-semibold text-adxc">
-                        {step.title}
-                      </h3>
-                    </div>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
+          <StepCards steps={STEPS} />
 
         </div>
 
-        {footer && (
-          <p className="mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-            {footer}
-          </p>
-        )}
       </Container>
     </Section>
   );

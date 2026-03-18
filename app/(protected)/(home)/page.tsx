@@ -1,19 +1,13 @@
-import { HeroSection } from "@/components/hero-section";
-import { Section } from "@/components/layout/section";
-import { Container } from "@/components/layout/container";
-import { WhyNowSection } from "../(app)/data-providers/_components/why-now-section";
-import { SMEsWantYourData } from "@/components/smes-want-your-data";
-import { AIAgentsSection } from "../(app)/data-providers/_components/ai-agents-section";
-import { MiroSection } from "../(app)/data-providers/_components/miro-section";
-import CalculatorDataProviders from "../(app)/data-providers/_components/calculator-data-providers";
+import { HeroSection } from "@/components/sections/hero-section";
+import { SMEsWantYourData } from "@/components/sections/smes-want-your-data";
 import WorkflowSection, { WorkflowStep } from "@/components/sections/workflow-section";
-import { Button } from "@/components/ui/button";
-import { SectionHeader } from "@/components/sections/section-header";
-import { Mail } from "lucide-react";
-import { useMemo } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { ProviderComparisonSection } from "@/components/provider-comparison-section";
+import { FooterCtaSection } from "@/components/sections/footer-cta-section";
+import { WhyNowSection } from "@/components/sections/why-now-section";
+import { AIAgentsSection } from "@/components/sections/ai-agents-section";
+import { MiroSection } from "@/components/sections/miro-section";
+import CalculatorDataProviders from "@/components/sections/calculator-data-providers";
+import { DataProviderValuePropsSection } from "@/components/sections/data-provider-value-props-section";
+import { DataNeedSection } from "@/components/sections/data-need-section";
 
 const steps: WorkflowStep[] = [
     { number: 1, title: "AI Request", description: "AI agents query ADXC when completing tasks inside workflows." },
@@ -23,14 +17,6 @@ const steps: WorkflowStep[] = [
 ];
 
 export default function HomePage() {
-    const contactEmail = "josh@1pa.ai";
-    const mailtoHref = useMemo(() => {
-        const subject = encodeURIComponent("Requesting more information about ADXC");
-        const body = encodeURIComponent(
-            "Hi,\n\nI’d like access to ADXC. Please share the password.\n\nThanks!"
-        );
-        return `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-    }, [contactEmail]);
 
     return (
         <>
@@ -38,9 +24,7 @@ export default function HomePage() {
 
             <SMEsWantYourData />
 
-            <ProviderComparisonSection />
-
-
+            <DataNeedSection />
 
             <WhyNowSection />
 
@@ -52,78 +36,13 @@ export default function HomePage() {
                 steps={steps}
             />
 
-            {/* Data Provider Value Props */}
-            <Section size="md">
-                <Container size="lg">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-
-                        {[
-                            {
-                                title: "No Datasets Stored",
-                                description:
-                                    "ADXC queries your data via API and returns only a synthesised answer. Datasets are never copied, stored, or exposed to end users.",
-                            },
-                            {
-                                title: "You Get Paid per Use",
-                                description:
-                                    "You get paid per query, proportioned by your data's contribution to the answer. We take a service fee.",
-                            },
-                            {
-                                title: "Customer Referrals",
-                                description:
-                                    "When an SME's usage of your data through ADXC reaches a threshold, we refer them directly to you for a full subscription.",
-                            },
-                        ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-3">
-                                <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
-                                <p className="text-sm text-muted-foreground leading-relaxed">
-                                    {item.description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </Container>
-            </Section>
+            <DataProviderValuePropsSection />
 
             <MiroSection />
 
-
             <CalculatorDataProviders />
 
-
-            {/* Footer CTA*/}
-            <Section size="md">
-                <Container size="sm">
-
-                    <SectionHeader
-                        title="Want a demo and more information?"
-                        align="center"
-                        size="md"
-                    />
-
-                    <div className="space-y-4 flex justify-center">
-                        <Button
-                            asChild
-                            className="max-w-xs w-full text-base py-6">
-                            <a
-                                href={mailtoHref}
-                                className="inline-flex items-center justify-center gap-2 w-full"
-                            >
-                                <Mail className="w-5 h-5" />
-                                Get in touch
-                            </a>
-                        </Button>
-                    </div>
-
-                </Container>
-            </Section>
-
-
-
-
-
-
+            <FooterCtaSection />
         </>
     );
 }

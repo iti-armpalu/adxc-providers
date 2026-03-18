@@ -1,8 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { COOKIE_NAME, verify } from "@/lib/gate-token";
-import { DemoVideoProvider } from "@/components/demo/demo-video-provider";
-import { AudiencePortalSection } from "@/components/audience-portal-section";
 
 export default async function ProtectedLayout({
     children,
@@ -34,8 +32,8 @@ export default async function ProtectedLayout({
     }
 
     return (
-        <DemoVideoProvider>
-            <main className="relative min-h-screen flex flex-col mt-15">{children}</main>
-        </DemoVideoProvider>
+
+        <main className="relative min-h-screen flex flex-col mt-15">{children}</main>
+
     );
 }

@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { SectionHeader } from "@/components/sections/section-header";
+import { SectionHeader } from "@/components/layout/section-header";
 import { Bot, Briefcase, Building2, Database, Search, Users } from "lucide-react";
 
 const previousReality = [

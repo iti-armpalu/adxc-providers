@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
-import { SectionHeader } from "@/components/sections/section-header";
+import { SectionHeader } from "@/components/layout/section-header";
 
 type PhaseId = "strategy" | "creative" | "media" | "execution" | "optimisation";
 type view = "annual" | "monthly";

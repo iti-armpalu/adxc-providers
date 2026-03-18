@@ -5,7 +5,6 @@ import { LogOut } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-import DemoButtons from "@/components/demo/demo-buttons";
 import Logo from "./logo";
 import { logoutAction } from "@/lib/gate-logout";
 
@@ -19,9 +18,6 @@ export default function Header({ showDemoButtons = true }: { showDemoButtons?: b
                 <Link href="/">
                     <Logo size="md" variant="full" theme="light" showGlow />
                 </Link>
-                <div className="hidden sm:inline-flex">
-                    {showDemoButtons ? <DemoButtons /> : null}
-                </div>
 
                 <div className="flex items-center gap-2">
 

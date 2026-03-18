@@ -1,7 +1,7 @@
 import { StatCard } from "@/components/cards/stat-card";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { SectionHeader } from "@/components/sections/section-header";
+import { SectionHeader } from "@/components/layout/section-header";
 
 export function SMEsWantYourData() {
   return (
@@ -20,7 +20,8 @@ export function SMEsWantYourData() {
             value=">99%"
             description={
               <>
-                of businesses are small and medium-sized enterprises
+                of businesses are SMEs
+                <span className="block text-xs opacity-50">Expensive data subscriptions price most out</span>
               </>
             }
           />

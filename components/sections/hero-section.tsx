@@ -1,6 +1,6 @@
-import { Container } from "./layout/container";
-import { Section } from "./layout/section";
-import { SectionHeader } from "./sections/section-header";
+import { Container } from "../layout/container";
+import { Section } from "../layout/section";
+import { SectionHeader } from "../layout/section-header";
 
 export function HeroSection() {
     return (
