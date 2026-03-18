@@ -37,7 +37,7 @@ export function FooterCtaSection({
                 <div className="mt-6 flex justify-center">
                     <Button
                         onClick={handleCopy}
-                        className="p-6 text-base font-semibold shadow-md transition hover:shadow-lg"
+                        className="w-full max-w-xs p-6 text-base font-semibold shadow-md transition hover:shadow-lg"
                     >
                         <span className="inline-flex w-full items-center justify-center gap-2">
                             {copied ? (
