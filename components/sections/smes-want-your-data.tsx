@@ -20,8 +20,7 @@ export function SMEsWantYourData() {
             value=">99%"
             description={
               <>
-                of businesses are SMEs
-                <span className="block text-xs opacity-50">Expensive data subscriptions price most out</span>
+                of businesses are SMEs. Expensive data subscriptions price most out
               </>
             }
           />

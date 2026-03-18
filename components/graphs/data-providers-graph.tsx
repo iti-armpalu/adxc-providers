@@ -159,7 +159,7 @@ export default function DataProvidersGraph() {
           <div className="mt-8 space-y-2">
             <div className="flex items-center justify-between">
               <h3 className="text-xs text-muted-foreground uppercase tracking-wider">
-                Data Providers
+                Example Data Providers
               </h3>
             </div>
 

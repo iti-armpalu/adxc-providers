@@ -8,10 +8,9 @@ import { StepCards } from "../cards/steps-card";
 const STEPS = [
   { number: 1, title: "AI Request", description: "AI agents query ADXC when completing tasks inside workflows." },
   { number: 2, title: "Orchestration", description: "ADXC's Agentic Orchestrator understands the question context, breaks it into sub-tasks and identifies the most relevant data to answer it." },
-  { number: 3, title: "Abstract Answer", description: "The customer sees an abstract of the answer and price." },
-  { number: 4, title: "Full Answer", description: "The user approves and ADXC pulls only the relevant data to answer the question." },
+  { number: 3, title: "Abstract Answer", description: "ADXC provides an abstract of the answer and price." },
+  { number: 4, title: "Full Answer", description: "The marketer approves, and ADXC pulls only the relevant data to answer the question." },
 ]
-
 
 export type WorkflowStep = {
   number: number;

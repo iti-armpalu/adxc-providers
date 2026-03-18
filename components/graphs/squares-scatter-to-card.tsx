@@ -506,7 +506,7 @@ export default function SquaresScatterToCard() {
             {/* Data Providers */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs text-muted-foreground uppercase tracking-wider">Data Providers</h3>
+                <h3 className="text-xs text-muted-foreground uppercase tracking-wider">Example Data Providers</h3>
               </div>
               <div className="relative bg-stone-50/30 rounded-xl p-2 border border-border/20">
                 <div className="flex gap-4 sm:gap-8 md:gap-16 justify-center">

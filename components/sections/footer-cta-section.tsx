@@ -1,5 +1,7 @@
-import { useMemo } from "react"
-import { Mail } from "lucide-react"
+"use client"
+
+import { useState } from "react"
+import { Mail, Check } from "lucide-react"
 import { Section } from "../layout/section"
 import { Container } from "../layout/container"
 import { SectionHeader } from "../layout/section-header"
@@ -7,29 +9,25 @@ import { Button } from "../ui/button"
 
 const CONTACT_EMAIL = "josh@1pa.ai"
 
-const EMAIL_SUBJECT = "Requesting more information about ADXC"
-
-const EMAIL_BODY = `Hi,
-
-I would like more information about ADXC and would be interested in a demo.
-
-Thanks!`
-
 type FooterCtaSectionProps = {
     title?: string
-    email?: string
 }
 
 export function FooterCtaSection({
     title = "Want a demo and more information?",
-    email = CONTACT_EMAIL,
 }: FooterCtaSectionProps) {
-    const mailtoHref = useMemo(() => {
-        const subject = encodeURIComponent(EMAIL_SUBJECT)
-        const body = encodeURIComponent(EMAIL_BODY)
+    const [copied, setCopied] = useState(false)
 
-        return `mailto:${email}?subject=${subject}&body=${body}`
-    }, [email])
+    async function handleCopy() {
+        try {
+            await navigator.clipboard.writeText(CONTACT_EMAIL)
+            setCopied(true)
+
+            setTimeout(() => setCopied(false), 2000)
+        } catch {
+            window.prompt("Copy email:", CONTACT_EMAIL)
+        }
+    }
 
     return (
         <Section size="md">
@@ -38,18 +36,34 @@ export function FooterCtaSection({
 
                 <div className="mt-6 flex justify-center">
                     <Button
-                        asChild
-                        className="w-full max-w-xs py-6 text-base font-semibold shadow-md transition hover:shadow-lg"
+                        onClick={handleCopy}
+                        className="p-6 text-base font-semibold shadow-md transition hover:shadow-lg"
                     >
-                        <a
-                            href={mailtoHref}
-                            className="inline-flex w-full items-center justify-center gap-2"
-                        >
-                            <Mail className="h-5 w-5" />
-                            Get in touch
-                        </a>
+                        <span className="inline-flex w-full items-center justify-center gap-2">
+                            {copied ? (
+                                <>
+                                    <Check className="h-5 w-5" />
+                                    Copied!
+                                </>
+                            ) : (
+                                <>
+                                    <Mail className="h-5 w-5" />
+                                    Copy email
+                                </>
+                            )}
+                        </span>
                     </Button>
                 </div>
+
+                {/* Optional: show email */}
+                <p className="mt-3 text-center text-sm text-muted-foreground">
+                    {CONTACT_EMAIL}
+                </p>
+
+                {/* Optional helper text */}
+                <p className="mt-1 text-center text-xs text-muted-foreground">
+                    Click to copy and email us directly
+                </p>
             </Container>
         </Section>
     )
