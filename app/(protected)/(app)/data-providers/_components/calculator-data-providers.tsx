@@ -148,7 +148,7 @@ export default function CalculatorDataProviders() {
         <div className="flex flex-col items-start">
           <SectionHeader
             title="Calculate your potential earnings"
-            description="See how much you could earn by switching to ADXC's on-demand model."
+            description="See how much you could earn through SMEs currently not buying subscriptions."
             size="md"
             align="left"
           />

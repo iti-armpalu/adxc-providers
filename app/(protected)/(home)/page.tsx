@@ -1,155 +1,129 @@
 import { HeroSection } from "@/components/hero-section";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
-import BrandStatsSection from "../(app)/brands/_components/brand-stats-section";
-import { ADXCApproachSection } from "@/components/adxc-approach-section";
-import CostCalculator from "@/components/cost-calculator";
-import { SectionHeader } from "@/components/sections/section-header";
-import { StatCard } from "@/components/cards/stat-card";
-import FinancialProjectionsSection from "@/components/financial-projections-section";
-import CompetitiveAdvantageSection from "@/components/competitive-advantage-section";
-import SalesMarketingSection from "@/components/sales-marketing-section";
-import TeamSection from "@/components/team-section";
-import AdvisorsSection from "@/components/advisors-section";
+import { WhyNowSection } from "../(app)/data-providers/_components/why-now-section";
+import { SMEsWantYourData } from "@/components/smes-want-your-data";
+import { AIAgentsSection } from "../(app)/data-providers/_components/ai-agents-section";
+import { MiroSection } from "../(app)/data-providers/_components/miro-section";
+import CalculatorDataProviders from "../(app)/data-providers/_components/calculator-data-providers";
+import WorkflowSection, { WorkflowStep } from "@/components/sections/workflow-section";
 import { Button } from "@/components/ui/button";
-import { CornerDownRight, ExternalLink } from "lucide-react";
-import VideoDemosSection from "@/components/video-demos-sections";
+import { SectionHeader } from "@/components/sections/section-header";
+import { Mail } from "lucide-react";
+import { useMemo } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { ProviderComparisonSection } from "@/components/provider-comparison-section";
 
+const steps: WorkflowStep[] = [
+    { number: 1, title: "AI Request", description: "AI agents query ADXC when completing tasks inside workflows." },
+    { number: 2, title: "Orchestration", description: "ADXC's Agentic Orchestrator understands the question context, breaks it into sub-tasks and identifies the most relevant data to answer it." },
+    { number: 3, title: "Abstract Answer", description: "The customer sees an abstract of the answer and price." },
+    { number: 4, title: "Full Answer", description: "The user approves and ADXC pulls only the relevant data to answer the question." },
+];
 
 export default function HomePage() {
+    const contactEmail = "josh@1pa.ai";
+    const mailtoHref = useMemo(() => {
+        const subject = encodeURIComponent("Requesting more information about ADXC");
+        const body = encodeURIComponent(
+            "Hi,\n\nI’d like access to ADXC. Please share the password.\n\nThanks!"
+        );
+        return `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    }, [contactEmail]);
+
     return (
         <>
             <HeroSection />
 
-            <Section size="md">
-                <Container size="md">
-                    <BrandStatsSection />
-                </Container>
-            </Section>
+            <SMEsWantYourData />
 
-            <Section size="md" className="relative">
-                <Container size="md">
-                    <SectionHeader
-                        title="See how much it costs to buy the data needed at each stage of the marketing workflow"
-                        size="sm"
-                        align="center"
-                    />
+            <ProviderComparisonSection />
 
-                    <div className="relative">
-                        <CostCalculator />
-                        <div className="absolute -left-[220px] top-6 -translate-y-1/2 max-w-[200px] hidden xl:block">
-                            <div className="flex flex-col">
-                                <div className="bg-card/80 backdrop-blur-xl border border-adxc rounded-xl px-4 py-3 shadow-md">
-                                    <p className="text-sm text-muted-foreground leading-relaxed">
-                                        <span className="uppercase text-adxc font-semibold">Click a task</span>
-                                        {" "}to see which data providers it uses and the associated costs
-                                    </p>
-                                </div>
 
-                                <CornerDownRight
-                                    className="mt-3 self-end text-adxc h-6 w-6"
-                                    aria-hidden="true"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </Container>
-            </Section>
 
-            <Section size="md">
-                <Container size="md">
-                    <SectionHeader
-                        title="This prices SMEs out and creates a large market opportunity"
-                        size="sm"
-                        align="center"
-                    />
+            <WhyNowSection />
 
-                    {/* Market Reality Stats */}
-                    <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <AIAgentsSection />
 
-                        <StatCard
-                            value=">99%"
-                            description={
-                                <>
-                                    of businesses are small and medium-sized enterprises
-                                </>
-                            }
-                        />
+            <WorkflowSection
+                title="ADXC unlocks this SME market for you"
+                description="ADXC is the data exchange connecting premium marketing data providers and SMEs via AI agents, on a pay-per-use model."
+                steps={steps}
+            />
 
-                        <StatCard
-                            value="~$18B"
-                            description={
-                                <>
-                                    untapped market
-                                    <span className="block text-xs opacity-50">Estimated annual SME research and data spend (UK + US)</span>
-                                </>
-                            }
-                        />
-                    </div>
-
-                </Container>
-            </Section>
-
-            <ADXCApproachSection />
-
-            {/* CTA Section */}
+            {/* Data Provider Value Props */}
             <Section size="md">
                 <Container size="lg">
-                    <SectionHeader
-                        title="Watch our founder's explanation with more details"
-                        size="sm"
-                        align="center"
-                        className="max-w-3xl"
-                    />
-                    <div className="flex flex-col md:flex-row items-center">
-                        <div className="flex-1 w-full aspect-video rounded-xl bg-muted overflow-hidden">
-                            <iframe
-                                className="w-full h-full"
-                                src="https://www.youtube.com/embed/uhDiez70s30"
-                                title="See it in action"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                            />
-                        </div>
-                        <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center">
-                            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">See it in action</h2>
-                            <p className="text-muted-foreground text-sm max-w-sm">
-                                Explore the platform yourself and discover how it can transform workflows
-                            </p>
-                            <Button size="lg" asChild className={`mt-2 text-base bg-foreground`}>
-                                <a
-                                    href="https://adxc.netlify.app/login"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <ExternalLink className="w-4 h-4" />
-                                    Try it yourself
-                                </a>
-                            </Button>
-                            {/* <DemoButtons /> */}
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+
+                        {[
+                            {
+                                title: "No Datasets Stored",
+                                description:
+                                    "ADXC queries your data via API and returns only a synthesised answer. Datasets are never copied, stored, or exposed to end users.",
+                            },
+                            {
+                                title: "You Get Paid per Use",
+                                description:
+                                    "You get paid per query, proportioned by your data's contribution to the answer. We take a service fee.",
+                            },
+                            {
+                                title: "Customer Referrals",
+                                description:
+                                    "When an SME's usage of your data through ADXC reaches a threshold, we refer them directly to you for a full subscription.",
+                            },
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-3">
+                                <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    {item.description}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </Container>
             </Section>
 
-            {/* Financial Projections Section */}
-            <FinancialProjectionsSection />
+            <MiroSection />
 
-            {/* Competitive Advantage Section */}
-            <CompetitiveAdvantageSection />
 
-            {/* Sales & Marketing Section */}
-            <SalesMarketingSection />
+            <CalculatorDataProviders />
 
-            {/* Team Section */}
-            <TeamSection />
 
-            {/* Advisors Section */}
-            <AdvisorsSection />
+            {/* Footer CTA*/}
+            <Section size="md">
+                <Container size="sm">
 
-            {/* Video Demos Section */}
-            <VideoDemosSection />
+                    <SectionHeader
+                        title="Want a demo and more information?"
+                        align="center"
+                        size="md"
+                    />
+
+                    <div className="space-y-4 flex justify-center">
+                        <Button
+                            asChild
+                            className="max-w-xs w-full text-base py-6">
+                            <a
+                                href={mailtoHref}
+                                className="inline-flex items-center justify-center gap-2 w-full"
+                            >
+                                <Mail className="w-5 h-5" />
+                                Get in touch
+                            </a>
+                        </Button>
+                    </div>
+
+                </Container>
+            </Section>
+
+
+
+
+
+
         </>
     );
 }

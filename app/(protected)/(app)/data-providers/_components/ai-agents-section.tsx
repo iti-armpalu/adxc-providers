@@ -27,17 +27,17 @@ const newReality = [
     {
         icon: Bot,
         title: "Agent-Native Data Access",
-        description: "Data accessed by AI agents",
+        description: "Data accessed by AI agents, so your data reaches previously unreachable users",
     },
     {
         icon: Search,
         title: "Query-Based Retrieval",
-        description: "Only the data required to answer a query is retrieved and seen",
+        description: "Only the data needed to answer a query is retrieved. Your IP and raw datasets stay fully protected",
     },
     {
         icon: Briefcase,
         title: "SME-Enabled Workflows",
-        description: "Enables enterprise-grade workflows for SMEs, where decisions are made",
+        description: "Net-new revenue from SMEs, without discounting your enterprise product",
     },
 ]
 
