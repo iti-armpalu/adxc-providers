@@ -7,7 +7,7 @@ import { Container } from "../layout/container"
 import { SectionHeader } from "../layout/section-header"
 import { Button } from "../ui/button"
 
-const CONTACT_EMAIL = "josh@1pa.ai"
+const CONTACT_EMAIL = "josh@adxc.ai"
 
 type FooterCtaSectionProps = {
     title?: string
